@@ -3,7 +3,6 @@
 
 #pragma once
 
-#include "Profiles.g.h"
 #include "ProfilePageNavigationState.g.h"
 #include "DeleteProfileEventArgs.g.h"
 #include "ProfileViewModel.g.h"
@@ -170,29 +169,4 @@ namespace winrt::Microsoft::Terminal::Settings::Editor::implementation
     private:
         Windows::Foundation::Collections::IMapView<hstring, Model::ColorScheme> _Schemes;
     };
-
-    struct Profiles : public HasScrollViewer<Profiles>, ProfilesT<Profiles>
-    {
-    public:
-        Profiles();
-
-        void OnNavigatedTo(const Windows::UI::Xaml::Navigation::NavigationEventArgs& e);
-        void OnNavigatedFrom(const Windows::UI::Xaml::Navigation::NavigationEventArgs& e);
-
-        WINRT_CALLBACK(PropertyChanged, Windows::UI::Xaml::Data::PropertyChangedEventHandler);
-
-        WINRT_PROPERTY(Editor::ProfilePageNavigationState, State, nullptr);
-
-    private:
-        void _UpdateBIAlignmentControl(const int32_t val);
-
-        std::array<Windows::UI::Xaml::Controls::Primitives::ToggleButton, 9> _BIAlignmentButtons;
-        Windows::UI::Xaml::Data::INotifyPropertyChanged::PropertyChanged_revoker _ViewModelChangedRevoker;
-        Windows::UI::Xaml::Data::INotifyPropertyChanged::PropertyChanged_revoker _AppearanceViewModelChangedRevoker;
-    };
 };
-
-namespace winrt::Microsoft::Terminal::Settings::Editor::factory_implementation
-{
-    BASIC_FACTORY(Profiles);
-}

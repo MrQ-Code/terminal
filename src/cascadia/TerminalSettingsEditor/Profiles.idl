@@ -90,10 +90,4 @@ namespace Microsoft.Terminal.Settings.Editor
 
         event Windows.Foundation.TypedEventHandler<ProfilePageNavigationState, DeleteProfileEventArgs> DeleteProfile;
     };
-
-    [default_interface] runtimeclass Profiles : Windows.UI.Xaml.Controls.Page, Windows.UI.Xaml.Data.INotifyPropertyChanged
-    {
-        Profiles();
-        ProfilePageNavigationState State { get; };
-    }
 }
